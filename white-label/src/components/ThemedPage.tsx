@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, Suspense } from 'react';
 import { useTheme } from '@cns/contexts/ThemeContext';
 import Header from './Header';
 import Footer from './Footer';
@@ -38,7 +38,9 @@ export default function ThemedPage({ children }: ThemedPageProps) {
 
 	return (
 		<div style={pageStyle}>
-			<Header />
+			<Suspense fallback={<div>Loading...</div>}>
+				<Header />
+			</Suspense>
 			<main style={mainStyle}>
 				{children}
 
